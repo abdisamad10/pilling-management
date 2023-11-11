@@ -5,16 +5,22 @@ export   const columns = [
     },
     {
       header: 'Name',
-      accessorKey: 'name',
+      accessorKey: 'fullname',
     },
+
+      {
+        header: 'Description',
+        accessorKey: 'description',
+        
+      },
     {
         header: 'Business',
         accessorKey: 'business',
         
       },
       {
-        header: 'Contact',
-        accessorKey: 'contact',
+        header: 'Phone',
+        accessorKey: 'phone',
       
       },
 

@@ -58,6 +58,7 @@ function SideBar() {
          </div>
          <div class="w-[220px] h-[2px] bg-gray-300 mt-3"></div>
        </div>
+       
       <ul class="flex flex-col ml-3 py-4 mt-4 space-y-1">
         <li>
           <a href="/" class="relative flex flex-row items-center h-11  focus:outline-none hover:bg-gray-50 text-gray-600  hover:text-blue-600 border-l-4 border-transparent hover:border-indigo-500 pr-6">
@@ -117,7 +118,7 @@ function SideBar() {
           </div>
         </li>
         <li>
-          <a href="/logout" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50  hover:text-blue-600 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+          <a href="/SignOut" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50  hover:text-blue-600 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4 hover:text-blue-600">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
             </span>

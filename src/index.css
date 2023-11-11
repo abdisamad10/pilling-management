@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-ul li :active {
+ li a:active{
    color: blue;
 }

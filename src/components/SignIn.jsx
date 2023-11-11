@@ -1,10 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 import coverImage from '../assets/Bg Elements.svg';
 import logoImage from '../assets/Logo.svg';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook,BsInstagram, BsLinkedin } from 'react-icons/bs';
-
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import {  useNavigate } from 'react-router-dom';
 function SignIn() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const navigate = useNavigate();
+
+  const baseUrl = "https://spiky-crater-dep2vxlep8.ploi.online";
+
+  const {
+    register,
+    formState: {errors},
+    handleSubmit,
+
+  } = useForm ();
+
+  const  onSubmit = async (data)   => {
+    // console.log(data);
+ 
+     const res = await axios.post(`${baseUrl}/api/auth/login`, data);
+ 
+     
+ 
+     if (res.status === 200) {
+      localStorage.setItem("token", res.data.token);
+       navigate("/");
+     } else {
+       console.error(errors.data)
+     }
+ }
+
   return (
     <div>
       <div className='grid lg:grid-cols-2 sm:grid-cols-1 bg-[#f9f9f9]'>
@@ -21,21 +54,27 @@ function SignIn() {
     </div>
 
     <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
+      <form onSubmit={handleSubmit(onSubmit)} class="space-y-6" action="#" method="POST">
         <div>
           <label htmlfor="email" class="block text-sm font-medium leading-6 text-gray-900">Email </label>
           <div class="mt-2">
-            <input id="email" name="email" type="email" placeholder='xyz@example.com ' autocomplete="email" required="" class=" bg-[#f9f9f9] block w-full rounded-md border-0 pl-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            <input {...register("email", {required: true})}   id="email" name="email" type="email" onChange={e => setEmail(e.target.value)}  placeholder='xyz@example.com ' autocomplete="email" required="" class=" bg-[#f9f9f9] block w-full rounded-md border-0 pl-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            {errors.email?.type === "required" && (
+                <span role='alert' className='text-red-500'> email is required</span>
+               )}
           </div>
         </div>
 
         <div>
           <div class="flex items-center justify-between">
-            <label htmlfor="password" class=" block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <label htmlfor="password"  class=" block text-sm font-medium leading-6 text-gray-900">Password</label>
           
           </div>
           <div class="mt-2">
-            <input id="password" name="password" type="password" placeholder='xxxx' autocomplete="current-password" required="" class="bg-[#f9f9f9] pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            <input  {...register("password", {required: true})} id="password"  name="password" onChange={e => setPassword(e.target.value)}  type="password" placeholder='xxxx' autocomplete="current-password" required="" class="bg-[#f9f9f9] pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            {errors.password?.type === "required" && (
+                <span role='alert' className='text-red-500'> is required</span>
+               )}
           </div>
           <div class="flex justify-between mt-2">
            

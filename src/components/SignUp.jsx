@@ -5,6 +5,8 @@ import { BsFacebook, BsInstagram, BsLinkedin} from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 
 function SignUp() {
@@ -18,9 +20,7 @@ function SignUp() {
 
   
 
-   
-    //  let item = {name, password, email}
-    //  console.log(item);
+ 
   
 
   const {
@@ -65,53 +65,53 @@ function SignUp() {
              </div>
             <form onSubmit={handleSubmit(onSubmit)} className=' mt-6 w-[452px] h-[520px]'>
           
-               <div className='grid grid-cols-2 mx-10  gap-20'>
-               <label>First Name
-               <input {...register("name", {required: true} )} type="text" name="name" id="name" placeholder='Abdisamad' onChange={e => setName(e.target.value)} value={name} className="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+               <div className='grid grid-cols-1  ml-14  gap-20'>
+               <label>Name
+               <input {...register("name", {required: true} )} type="text" name="name" id="name" placeholder='Abdisamad' onChange={e => setName(e.target.value)} value={name} className="block w-full h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.name?.type === "required" && (
-                <span role='alert' className='text-red-500'>FName is required</span>
+                <span role='alert' className='text-red-500'>Name is required</span>
                )}
                </label>
                 
 
-               <label>Last Name
+               {/* <label>Last Name
                <input {...register("lastName", {required: true})} type="text" name="lastName" id="lastName" placeholder='Moha' autocomplete="given-name" class="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.lastName?.type === "required" && (
                 <span role='alert' className='text-red-500'>LName is required </span>
                )}
-               </label>
+               </label> */}
                </div>
 
-               <div className='grid grid-cols-2 mx-10  gap-20 my-3'>
+               <div className='grid grid-cols-1 ml-14  gap-20 my-3'>
                <label>Email
-               <input {...register("email", {required: true})} type="email" onChange={e => setEmail(e.target.value)}    name="email" value={email} id="email" placeholder='xyz@example.com ' autocomplete="given-name" class="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+               <input {...register("email", {required: true})} type="email" onChange={e => setEmail(e.target.value)}    name="email" value={email} id="email" placeholder='xyz@example.com ' autocomplete="given-name" class="block w-full h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.email?.type === "required" && (
                 <span role='alert' className='text-red-500'> email is required</span>
                )}
                </label>
-
+{/* 
                <label>Phone No.
                <input {...register("phone", {required: true})} type="phone" name="phone" id="phone" placeholder='12345676'  class="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.phone?.type === "required" && (
                 <span role='alert' className='text-red-500'>phone is required</span>
                )}
-               </label>
+               </label> */}
                </div>
               
-               <div className='grid grid-cols-2 mx-10  gap-20 my-3'>
+               <div className='grid grid-cols-1 ml-14 gap-20 my-3'>
                <label>Password
-               <input {...register("password", {required: true})} type="password" onChange={e => setPassword(e.target.value)} value={password} name="password" id="password" placeholder='xxxxxxxx' autocomplete="given-password" class="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
+               <input {...register("password", {required: true})} type="password" onChange={e => setPassword(e.target.value)} value={password} name="password" id="password" placeholder='xxxxxxxx' autocomplete="given-password" class="block w-full h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.password?.type === "required" && (
                 <span role='alert' className='text-red-500'>pass is required</span>
                )}
                </label>
 
-               <label>Confirm Password
+               {/* <label>Confirm Password
                <input {...register("conpassword")} type="password" name="confirmPassword" id="confirmPassword" placeholder='xxxxxxxx ' autocomplete="given-name" class="block w-[200px] h-[35px] bg-[#f9f9f9]  rounded-md border-0 mt-2 px-3.5 py-2 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></input>
                {errors.password?.type === "required" && (
                 <span role='alert' className=' text-red-500'>Con pass is required</span>
                )}
-               </label>    
+               </label>     */}
                </div>
 
                 <div className='flex  mt-6 justify-center'>
@@ -132,7 +132,9 @@ function SignUp() {
                     <BsInstagram className='text-pink-500'/>
                     <BsLinkedin className='text-blue-500' />
                     </div>
-                    <p className='ml-24  '>Already have an Account <a href='/signin' className='text-[#3A57E8]'>Sign in</a></p>
+                    <Link to='/signin'>
+                    <p className='ml-24'>Already have an Account <a href='/signin' className='text-[#3A57E8]'>Sign in</a></p>
+                    </Link>
                 </div>
 
           </div>

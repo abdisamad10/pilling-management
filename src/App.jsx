@@ -14,6 +14,8 @@ import ProductTable from './components/productTable';
 import OrderTable from './components/OrderTable';
 import UserTable from './components/UserTable';
 import AddNewOrder from './components/AddNewOrder';
+import SignOut from './components/SignOut';
+import ProtectRoutes from './components/protectRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
@@ -21,16 +23,20 @@ function App() {
   return (
 
     <BrowserRouter>
+
     <Routes>
+    <Route path='/signin' element={<SignIn />}></Route>
+    <Route path='/signup' element={<SignUp/>}></Route>
+    <Route element={<ProtectRoutes />} >
       <Route path='/'  element={[<SideBar />, <Header />,<Overview />,  <Cards /> ,<Charts />,<Footer />]}></Route>
       <Route path='/customers' element={[<SideBar />, <Header />,<CustomerTable />]}></Route>
       <Route path='/agents' element={[<SideBar />, <Header />,<AgentsTables />]}></Route>
       <Route path='/product' element={[<SideBar />, <Header />, <ProductTable />]}></Route>
       <Route path='/order' element={[<SideBar />, <Header />,<OrderTable />]}></Route>
       <Route path='/user' element={[<SideBar />, <Header />,<UserTable />]}></Route>
-      <Route path='/logout' element={<SignIn />}></Route>
-      <Route path='/signup' element={<SignUp/>}></Route>
-      <Route path='/signin' element={<SignIn/>}></Route>
+     
+      <Route path='/SignOut' element={<SignOut/>}></Route>
+      </Route>
     </Routes>
         
          {/* <AddNewOrder /> */}
