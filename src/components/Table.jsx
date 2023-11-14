@@ -51,18 +51,18 @@ return (
      
      <div className='flex justify-between items-center px-20 mb-8'>
     <label> Showing
-     <select
-      value={pageSize}
-      onChange={e => {
-          setPageSize(Number(e.target.value))
-      }}
-    >
-      {[10, 5, 20].map(pageSize => (
-          <option key={pageSize} value={pageSize}>
-          {pageSize}
-        </option>
-      ))}
-    </select> entries</label>
+    <select
+          value={table.getState().pagination.pageSize}
+          onChange={e => {
+            table.setPageSize(Number(e.target.value))
+          }}
+        >
+          {[5, 10, 15].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+               {pageSize}
+            </option>
+          ))}
+        </select> entries</label>
 
     <div >
         <input type='text' className='bg-[#E9ECEF] rounded-md p-3 h-10 w-60' value={filtering} onChange={e => setfiltering(e.target.value)}/>
@@ -112,11 +112,22 @@ return (
      
     </tbody>
     </table>
-    <div className='space-x-2 my-5     flex  justify-end '>
+    <div className=' mx-20 my-3     flex  justify-between'>
+       <div>  
+       <span className="flex items-center gap-1">
+          <div>Page</div>
+          <strong>
+            {table.getState().pagination.pageIndex + 1} of{' '}
+            {table.getPageCount()}
+          </strong>
+        </span>
+        </div>
+        <div>
         <button  onClick={()=> table.setPageIndex(0)}><MdKeyboardDoubleArrowLeft className=' w-10 h-10' /></button>
         <button  className='rotate-180 w-10 h-10' disabled={!table.getCanPreviousPage()} onClick={() => table.previousPage()}><BiSkipNext className=' w-10 h-10' /></button>
         <button disabled={!table.getCanNextPage()} onClick={() => table.nextPage()}><BiSkipNext className=' w-10 h-10' /></button>
         <button className='rotate-180' onClick={() => table.setPageIndex(table.getPageCount() -1)}><MdKeyboardDoubleArrowLeft className=' w-10 h-10' /></button>
+        </div>
     </div>
 
 </div>
