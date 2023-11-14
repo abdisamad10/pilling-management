@@ -1,30 +1,78 @@
 
-import mData from '../agents.json';
+// import mData from '../agents.json';
 import Table from '../components/Table';
 
 
 import React, { useEffect, useMemo, useState } from 'react';
-import {columns} from './AgentColumn';
+// import {columns} from './AgentColumn';
 import axios from 'axios';
 
 
 function Agents() {
-const [agentsApi, setAgentsApi] = useState([]) 
+// const [agentsApi, setAgentsApi] = useState([]) 
 
-const data = useMemo(()=> agentsApi, []);
+// const data = useMemo(()=> agentsApi, []);
 
 const baseUrl = 'https://spiky-crater-dep2vxlep8.ploi.online';
 
-const fetchAgents = () => {
-  const res = axios.get(`${baseUrl}/api/v1/agents`)
-  const result = res.data.json();
-  setAgentsApi(result);
+const columns = useMemo(
+  () => [
+    {
+      header: 'No',
+      accessorKey: 'id',
+    },
+    {
+      header: 'Name',
+      accessorKey: 'fullname',
+    },
 
-  useEffect(() => {
-    fetchAgents()
-  }, [])
+      {
+        header: 'Description',
+        accessorKey: 'description',
+        
+      },
+    {
+        header: 'Business',
+        accessorKey: 'business',
+        
+      },
+      {
+        header: 'Phone',
+        accessorKey: 'phone',
+      
+      },
 
-}
+      {
+        header: 'Action',
+        accessorKey: 'action',
+      
+      },
+  ],
+  []
+);
+
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  (async () => {
+    const token = localStorage.getItem('token')
+   
+    const result = await axios(`${baseUrl}/api/v1/agents`, {headers: {"Authorization": "Bearer " + token}});
+    setData(result.data.data);
+    console.log(result.data.data);
+  })();
+}, []);
+// const fetchAgents = () => {
+
+//   const res = axios.get(`${baseUrl}/api/v1/agents`)
+//    .then(data => {
+//     console.log(res.data);
+//     setAgentsApi(res.data);
+//    }).catch(Error => {
+//     console.log(err);
+//    },[]);
+
+// }
 
 
 

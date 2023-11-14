@@ -15,14 +15,7 @@ import React, { useMemo, useState } from 'react';
 
 function Table({data, columns}) {
 
-// {
-//     "No": 1,
-//     "Name": "Abdisamad Moha",
-//     "Contact": "615888069",
-//     "Address": "4140 Parker Rd. ",
-//     "Description": " here are  notes",
-//     "Agents": "CGC"
-// }
+
 
 
 const [sorting, setSorting] = useState([]);
