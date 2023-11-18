@@ -1,18 +1,67 @@
 
 import Table from '../components/Table';
-import mData from '../Mock_Data.json';
+// import mData from '../Mock_Data.json';
+import axios from 'axios';
 
-
-import React, { useMemo, useState } from 'react';
-import {columns} from './CutomersColumns';
+import React, {useEffect, useMemo, useState } from 'react';
+// import {columns} from './CutomersColumns';
 
 
 function CustomerTable() {
 
    
-    const data = useMemo(()=> mData, []);
+  const baseUrl = 'https://spiky-crater-dep2vxlep8.ploi.online';
 
+const columns = useMemo(
+  () => [
+    {
+      header: 'No',
+      accessorKey: 'id',
+    },
+    {
+      header: 'Name',
+      accessorKey: 'fullname',
+    },
+    {
+        header: 'Contact',
+        accessorKey: 'phone',
+        
+      },
+      {
+        header: 'Address',
+        accessorKey: 'address',
+      
+      },
+    {
+      header: 'Description',
+      accessorKey: 'description',
+    },
+    {
+        header: 'Agents',
+        accessorKey: 'agency',
+      
+      },
 
+      {
+        header: 'Action',
+        accessorKey: 'action',
+      
+      },
+  ],
+  []
+);
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      (async () => {
+        const token = localStorage.getItem('token')
+       
+        const result = await axios(`${baseUrl}/api/v1/customers?page=50`, {headers: {"Authorization": "Bearer " + token}});
+        setData(result.data.data);
+        console.log(result.data.data);
+      })();
+    }, []);
 
 
   return (

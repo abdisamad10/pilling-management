@@ -73,7 +73,7 @@ function SignIn() {
           <div class="mt-2">
             <input  {...register("password", {required: true})} id="password"  name="password" onChange={e => setPassword(e.target.value)}  type="password" placeholder='xxxx' autocomplete="current-password" required="" class="bg-[#f9f9f9] pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
             {errors.password?.type === "required" && (
-                <span role='alert' className='text-red-500'> is required</span>
+                <span role='alert' className='text-red-500'>Password is required</span>
                )}
           </div>
           <div class="flex justify-between mt-2">

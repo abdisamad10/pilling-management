@@ -62,18 +62,6 @@ useEffect(() => {
     console.log(result.data.data);
   })();
 }, []);
-// const fetchAgents = () => {
-
-//   const res = axios.get(`${baseUrl}/api/v1/agents`)
-//    .then(data => {
-//     console.log(res.data);
-//     setAgentsApi(res.data);
-//    }).catch(Error => {
-//     console.log(err);
-//    },[]);
-
-// }
-
 
 
 return (
