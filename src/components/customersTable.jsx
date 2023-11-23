@@ -57,7 +57,7 @@ const columns = useMemo(
       (async () => {
         const token = localStorage.getItem('token')
        
-        const result = await axios(`${baseUrl}/api/v1/customers?page=50`, {headers: {"Authorization": "Bearer " + token}});
+        const result = await axios(`${baseUrl}/api/v1/customers`, {headers: {"Authorization": "Bearer " + token}});
         setData(result.data.data);
         console.log(result.data.data);
       })();

@@ -4,14 +4,11 @@ import Table from '../components/Table';
 
 
 import React, { useEffect, useMemo, useState } from 'react';
-// import {columns} from './AgentColumn';
 import axios from 'axios';
 
 
 function Agents() {
-// const [agentsApi, setAgentsApi] = useState([]) 
 
-// const data = useMemo(()=> agentsApi, []);
 
 const baseUrl = 'https://spiky-crater-dep2vxlep8.ploi.online';
 

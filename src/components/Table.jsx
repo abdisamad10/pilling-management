@@ -50,7 +50,7 @@ return (
             table.setPageSize(Number(e.target.value))
           }}
         >
-          {[5, 10, 15].map(pageSize => (
+          {[5, 10, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
                {pageSize}
             </option>
