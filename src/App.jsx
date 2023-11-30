@@ -13,9 +13,10 @@ import CustomerTable from './components/customersTable';
 import ProductTable from './components/productTable';
 import OrderTable from './components/OrderTable';
 import UserTable from './components/UserTable';
-import AddNewOrder from './components/AddNewOrder';
+import AddNewOrder from './components/crud-orders/AddNewOrder';
 import SignOut from './components/SignOut';
 import ProtectRoutes from './components/protectRoutes';
+import AddOrder from './components/crud-orders/AddOrder';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
@@ -24,7 +25,7 @@ function App() {
 
     <BrowserRouter>
 
-    <Routes>
+    {/* <Routes>
     <Route path='/signin' element={<SignIn />}></Route>
     <Route path='/signup' element={<SignUp/>}></Route>
     <Route element={<ProtectRoutes />} >
@@ -37,9 +38,9 @@ function App() {
      
       <Route path='/SignOut' element={<SignOut/>}></Route>
       </Route>
-    </Routes>
-        
-         {/* <AddNewOrder /> */}
+    </Routes> */}
+        {/* <AddOrder /> */}
+         <AddNewOrder />
     </BrowserRouter>
   );
 }
