@@ -1,11 +1,13 @@
 
 import Table from '../components/Table';
 
-
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 import React, {useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 // import {columns} from './OrderCulomn';
+import EditOrder from '../components/crud-orders/EditOrder';
 
 
 function OrderTable() {
@@ -37,6 +39,12 @@ function OrderTable() {
       {
           header: 'Customer',
           accessorKey: 'customer',
+          Cell: ({ row }) => {
+            const customer = row.customer && row.customer.length > 0 ? row.customer[0] : null;
+            return <>{customer ? customer.fullname : ""}
+           </>;
+
+          },
           
         },
         {
@@ -54,8 +62,31 @@ function OrderTable() {
         {
           header: 'Action',
           accessorKey: 'action',
+          cell: ({row}) => {
+            const [editModal, setEditModal] = useState(false);
+            return (
+              <div className='flex space-x-3 pr-7'>
+              <button type='button' onClick={()  => setEditModal(true)}>
+              <MdOutlineModeEdit className='w-8 h-6 text-blue-600' />
+              </button>
+              <button>
+              <RiDeleteBin6Line  className='w-8 h-6 text-blue-600'  />
+              </button>
+
+              {editModal &&(
+                <div className='absolute left-0 right-0 top-0 bottom-0 bg-black bg-opacity-40'>
+               <EditOrder />
+               </div>
+               ) }
+              </div>
+            )
+          
+          }
+          
+          
         
         },
+
     ],
     []
   );
@@ -82,6 +113,7 @@ return (
       <h1 className='my-8 pl-20 text-2xl font-bold'>Orders</h1>
  
     <Table data={data} columns={columns}/>
+    
 
 </div>
 )

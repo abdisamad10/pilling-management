@@ -8,6 +8,9 @@ import {useReactTable,
 import {MdKeyboardDoubleArrowLeft} from 'react-icons/md'
 import {BiSkipNext} from 'react-icons/bi';
 import {GoSearch} from 'react-icons/go';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { IoPersonAddSharp } from "react-icons/io5";
 
 import React, { useMemo, useState } from 'react';
 
@@ -93,12 +96,19 @@ return (
       {table.getRowModel().rows.map(row => (
         <tr key={row.id} >
           {row.getVisibleCells().map(cell => (
-            <td key={cell.id} className='pl-20 py-4 border-b-2 '>
+            <td key={cell.id} className='pl-16 py-4  border-b-2 '>
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
+             
             </td>
+            
            
           ))}
-         
+        
+          {/* <div className='flex space-x-2 items-center justify-center mt-8 pr-6'>
+          <IoPersonAddSharp />
+          <MdOutlineModeEdit />
+          <RiDeleteBin6Line />
+          </div> */}
         </tr>
         
       ))}

@@ -5,6 +5,8 @@ import Table from '../components/Table';
 
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 
 function Agents() {
@@ -42,6 +44,26 @@ const columns = useMemo(
       {
         header: 'Action',
         accessorKey: 'action',
+        cell: ({row}) => {
+          const [editModal, setEditModal] = useState(false);
+          return (
+            <div className='flex space-x-3 pr-7'>
+            <button type='button' onClick={()  => setEditModal(true)}>
+            <MdOutlineModeEdit className='w-8 h-6 text-blue-600' />
+            </button>
+            <button>
+            <RiDeleteBin6Line  className='w-8 h-6 text-blue-600'  />
+            </button>
+
+            {editModal &&(
+              <div className='absolute left-0 right-0 top-0 bottom-0 bg-black bg-opacity-40'>
+             <EditOrder />
+             </div>
+             ) }
+            </div>
+          )
+        
+        }
       
       },
   ],
