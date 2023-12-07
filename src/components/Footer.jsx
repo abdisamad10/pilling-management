@@ -3,9 +3,9 @@ import React from 'react'
 function Footer() {
   return (
     <div>
-        <footer class=" flex flex-col  bg-white w-[1600px] h-[45px] ml-[306px] mb-[20px] shadow-md mt-[800px] ">
-        <div class="flex justify-between mx-6 mt-2 ">
-            <div class="flex space-x-4">
+        <footer className=" flex flex-col  bg-white w-[1600px] h-[45px] ml-[306px] mb-[20px] shadow-md mt-[800px] ">
+        <div className="flex justify-between mx-6 mt-2 ">
+            <div className="flex space-x-4">
                 <p>Privacy Police</p>
 
                 <p>Terms of Use</p>

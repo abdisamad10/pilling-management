@@ -71,7 +71,7 @@ const data = [
 function Charts() {
   return (
     <div>
-    <div class="absolute ml-[320px] shadow-md bg-white w-[1540px] mt-[-50px]">
+    <div className="absolute ml-[320px] shadow-md bg-white w-[1540px] mt-[-50px]">
         <LineChart
           width={1540}
           height={800}

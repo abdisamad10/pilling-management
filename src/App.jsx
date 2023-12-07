@@ -30,8 +30,8 @@ function App() {
     <Route path='/signup' element={<SignUp/>}></Route>
     <Route element={<ProtectRoutes />} >
       <Route path='/'  element={[<SideBar />, <Header />,<Overview />,  <Cards /> ,<Charts />,<Footer />]}></Route>
-      <Route path='/customers' element={[<SideBar />, <Header />,<CustomerTable />]}></Route>
       <Route path='/agents' element={[<SideBar />, <Header />,<AgentsTables />]}></Route>
+      <Route path='/customers' element={[<SideBar />, <Header />,<CustomerTable />]}></Route>
       <Route path='/product' element={[<SideBar />, <Header />, <ProductTable />]}></Route>
       <Route path='/order' element={[<SideBar />, <Header />,<OrderTable />]}></Route>
       <Route path='/user' element={[<SideBar />, <Header />,<UserTable />]}></Route>
