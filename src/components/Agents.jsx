@@ -47,7 +47,7 @@ const columns = useMemo(
         cell: ({row}) => {
           const [editModal, setEditModal] = useState(false);
           return (
-            <div className='flex space-x-3 pr-7'>
+            <div className='flex space-x-3 pl-40'>
             <button type='button' onClick={()  => setEditModal(true)}>
             <MdOutlineModeEdit className='w-8 h-6 text-blue-600' />
             </button>
