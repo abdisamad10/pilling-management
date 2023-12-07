@@ -15,6 +15,7 @@ import React, {useEffect, useMemo, useState } from 'react';
 // import {columns} from './ProductCulumn';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEdit } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 
 
 function ProductTable() {
@@ -47,12 +48,12 @@ function ProductTable() {
           cell: ({row}) => {
             const [editModal, setEditModal] = useState(false);
             return (
-              <div className='flex space-x-3 pr-7'>
-              <button type='button' onClick={()  => setEditModal(true)}>
-              <MdOutlineModeEdit className='w-8 h-6 text-blue-600' />
+              <div className='flex space-x-3 pl-44'>
+              <button type='button' onClick={()  => setEditModal(true)} className='bg-blue-600 w-8 h-10 rounded-md'>
+              <MdOutlineModeEdit className='w-8 h-6 text-white' />
               </button>
-              <button>
-              <RiDeleteBin6Line  className='w-8 h-6 text-blue-600'  />
+              <button className='bg-red-600 w-8 h-10 rounded-md'>
+              <RiDeleteBin6Line  className='w-8 h-6 text-white'  />
               </button>
   
               {editModal &&(
@@ -86,6 +87,10 @@ return (
 <div className="mt-28 ml-[300px]  grid columns-6 items-start  bg-white shadow-md">
       <h1 className='my-8 pl-20 text-2xl font-bold'>Product</h1>
     
+      <button className='bg-blue-600 w-40 h-14 flex justify-center items-center font-bold text-white rounded-md absolute right-[340px] top-[198px]'>
+      
+      <IoMdAddCircle className='w-10 h-8'/>
+      AddOrders</button>
     <Table data={data} columns={columns}/>
 
 </div>
