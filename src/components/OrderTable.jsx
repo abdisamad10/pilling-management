@@ -8,6 +8,7 @@ import React, {useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 // import {columns} from './OrderCulomn';
 import EditOrder from '../components/crud-orders/EditOrder';
+import AddOrder from '../components/crud-orders/AddNewOrder';
 import { IoMdAddCircle } from "react-icons/io";
 
 function OrderTable() {
@@ -92,7 +93,7 @@ function OrderTable() {
   );
   
   const [data, setData] = useState([]);
-
+  const [AddNewOrder, setAddNewOrder] = useState(false);
   
   useEffect(() => {
     (async () => {
@@ -106,16 +107,23 @@ function OrderTable() {
 
 
 
-
+ 
 
 
 return (
+  
 <div className="mt-28 ml-[300px]  grid columns-6 items-start  bg-white shadow-md">
       <h1 className='my-8 pl-20 text-2xl font-bold'>Orders</h1>
-      <button className='bg-blue-600 w-40 h-14 flex justify-center items-center font-bold text-white rounded-md absolute right-[340px] top-[198px]'>
+      <button type='button' onClick={()  => setAddNewOrder(true)} className='bg-blue-600 w-40 h-14 flex justify-center items-center font-bold text-white rounded-md absolute right-[340px] top-[198px]'>
       
       <IoMdAddCircle className='w-10 h-8'/>
       AddOrders</button>
+      {AddNewOrder && (
+        <div className='absolute left-0 right-0 top-0 bottom-0 bg-black bg-opacity-40'>
+
+          <AddOrder />
+        </div>
+      )}
     <Table data={data} columns={columns}/>
     
 

@@ -6,7 +6,7 @@ function EditOrder() {
     <div className='flex justify-center my-36'>
     <form class="max-w-xl m-1 p-10  bg-white rounded shadow-xl">
         <div className='flex justify-between items-center mb-5'>
-         <h2 class="font-bold">Add New Order</h2>
+         <h2 class="font-bold">Edit Order</h2>
          <button class="bg-blue-600 w-20 h-9 justify-center text-white rounded-md ">close</button>
        </div>
     <div class="mt-2">
