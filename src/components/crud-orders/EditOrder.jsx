@@ -1,13 +1,18 @@
 import React from 'react'
 
-function EditOrder() {
+const EditOrder = props => {
+
+  if(!props.show) {
+    return null
+   }
+
   return (
-    <div>
+    <div className='absolute left-0 right-0 top-0 bottom-0  bg-black bg-opacity-40'>
     <div className='flex justify-center my-36'>
     <form class="max-w-xl m-1 p-10  bg-white rounded shadow-xl">
         <div className='flex justify-between items-center mb-5'>
          <h2 class="font-bold">Edit Order</h2>
-         <button class="bg-blue-600 w-20 h-9 justify-center text-white rounded-md ">close</button>
+         <button   onClick={props.onClose}    class="bg-blue-600 w-20 h-9 justify-center text-white rounded-md ">close</button>
        </div>
     <div class="mt-2">
       <label class="block text-sm text-gray-00" for="cus_name">ID</label>
