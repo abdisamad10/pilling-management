@@ -4,7 +4,7 @@ import { set, useForm } from 'react-hook-form'
 
 const AddNewOrder = props => {
 
-   if(!props.show) {
+   if(!props.AddNewOrder) {
     return null
    }
 
