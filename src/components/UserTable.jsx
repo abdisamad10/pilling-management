@@ -89,7 +89,12 @@ return (
       <IoMdAddCircle className='w-10 h-8'/>
       AddNewUser</button>
       
-      <AddNewuser onClose={() => setshowuser(false)} showuser={showuser}/>
+     {showuser && (
+      <div>
+      <AddNewuser onClose={() => setshowuser(false)}/>
+      </div>
+     ) }
+
       <EditUser onClose={() => setshowedit(false)} showedit={showedit} />
      
     <Table data={data} columns={columns} />

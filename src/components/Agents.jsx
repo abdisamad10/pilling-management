@@ -8,10 +8,13 @@ import axios from 'axios';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { IoMdAddCircle } from "react-icons/io";
-
+import AddNewAgent from '../components/crud-agents/AddNewAgent';
+import EditAgent from '../components/crud-agents/EditAgent';
 
 function Agents() {
 
+const [addAgent, setAddagent] = useState(false)
+const [editAgent, setEditAgent] = useState(false);
 
 const baseUrl = 'https://spiky-crater-dep2vxlep8.ploi.online';
 
@@ -46,21 +49,17 @@ const columns = useMemo(
         header: 'Action',
         accessorKey: 'action',
         cell: ({row}) => {
-          const [editModal, setEditModal] = useState(false);
+          // const [editModal, setEditModal] = useState(false);
           return (
             <div className='flex space-x-3 pl-36'>
-            <button type='button' onClick={()  => setEditModal(true)} className='bg-blue-600 w-8 h-10 rounded-md'>
+            <button type='button' onClick={()  => setEditAgent(true)} className='bg-blue-600 w-8 h-10 rounded-md'>
             <MdOutlineModeEdit className='w-8 h-6 text-white' />
             </button>
             <button className='bg-red-600 w-8 h-10 rounded-md'>
             <RiDeleteBin6Line  className='w-8 h-6 text-white'  />
             </button>
 
-            {editModal &&(
-              <div className='absolute left-0 right-0 top-0 bottom-0 bg-black bg-opacity-40'>
-             <EditOrder />
-             </div>
-             ) }
+          
             </div>
           )
         
@@ -87,10 +86,21 @@ useEffect(() => {
 return (
 <div className="mt-28 ml-[300px]  grid columns-6 items-start  bg-white shadow-md">
       <h1 className='my-8 pl-20 text-2xl font-bold'>Agents</h1>
-      <button className='bg-blue-600 w-40 h-14 flex justify-center items-center font-bold text-white rounded-md absolute right-[340px] top-[198px]'>
+      <button onClick={() => setAddagent(true)} className='bg-blue-600 w-40 h-14 flex justify-center items-center font-bold text-white rounded-md absolute right-[340px] top-[198px]'>
         
         <IoMdAddCircle className='w-10 h-8'/>
-        AddOrders</button>
+        AddAgent</button>
+        {addAgent && (
+      <div>
+      <AddNewAgent onClose={() => setAddagent(false)}/>
+      </div>
+     ) }
+
+            {editAgent &&(
+              <div>
+             <EditAgent onClose={() => setEditAgent(false)} />
+             </div>
+             ) }
     <Table data={data} columns={columns}/>
 
 </div>
