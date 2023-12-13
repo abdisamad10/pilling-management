@@ -14,7 +14,7 @@ import EditAgent from '../components/crud-agents/EditAgent';
 function Agents() {
 
 const [addAgent, setAddagent] = useState(false)
-const [editAgent, setEditAgent] = useState(false);
+
 
 const baseUrl = 'https://spiky-crater-dep2vxlep8.ploi.online';
 
@@ -49,16 +49,24 @@ const columns = useMemo(
         header: 'Action',
         accessorKey: 'action',
         cell: ({row}) => {
+          const [editAgent, setEditAgent] = useState(false);
+          const [id, setId] = useState()
           // const [editModal, setEditModal] = useState(false);
           return (
             <div className='flex space-x-3 pl-36'>
-            <button type='button' onClick={()  => setEditAgent(true)} className='bg-blue-600 w-8 h-10 rounded-md'>
+            <button type='button'  onClick={()  => { setEditAgent(true);
+             setId(row.id)}} className='bg-blue-600 w-8 h-10 rounded-md'>
             <MdOutlineModeEdit className='w-8 h-6 text-white' />
             </button>
             <button className='bg-red-600 w-8 h-10 rounded-md'>
             <RiDeleteBin6Line  className='w-8 h-6 text-white'  />
             </button>
-
+           
+            {editAgent && (
+              <div>
+             <EditAgent onClose={() => setEditAgent(false)} id={id} />
+             </div>
+             ) }
           
             </div>
           )
@@ -96,11 +104,7 @@ return (
       </div>
      ) }
 
-            {editAgent &&(
-              <div>
-             <EditAgent onClose={() => setEditAgent(false)} />
-             </div>
-             ) }
+          
     <Table data={data} columns={columns}/>
 
 </div>

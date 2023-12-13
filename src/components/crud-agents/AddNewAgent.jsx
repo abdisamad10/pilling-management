@@ -10,14 +10,22 @@ const AddNewAgent = ({onClose}) => {
 //     return null
 //    }
 
+const [AddAgent, setAddAgent] = useState([])
+
 const [fullname, setFullName] = useState("")
 const [description, setDescription] = useState("")
 const [business, setBusiness] = useState("")
 const [phone, setPhone] = useState("");
 
 
+const handleClear = () => {
+  setFullName("");
+  setDescription("");
+  setBusiness("");
+  setPhone("");
+}
 
- const [AddAgent, setAddAgent] = useState([])
+
 
   const  onsubmit =  (data)   => {
     console.log(data);
@@ -25,11 +33,11 @@ const [phone, setPhone] = useState("");
   }
 
   const baseUrl = "https://spiky-crater-dep2vxlep8.ploi.online";
-  
+  const token = localStorage.getItem("token");
 
-   const postAgent = (data) => {
-    const token = localStorage.getItem("token");
-     const req = axios.post(`${baseUrl}/api/v1/agents`, data , {
+   const postAgent = async (data) => {
+   
+     const req = await axios.post(`${baseUrl}/api/v1/agents`, data , {
         headers: {
             "Content-Type":" application/json",
             Accept: "application/json",
@@ -40,6 +48,7 @@ const [phone, setPhone] = useState("");
      if (req.status === 201) {
         setAddAgent(req.data);
         alert("agent registration has successfull");
+        onClose();
      }
      else{
       console.log(errors);
@@ -98,7 +107,7 @@ const [phone, setPhone] = useState("");
 
     <div className="mt-4 flex justify-between">
       <button className="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded" type="submit">Submit</button>
-      <button className="px-4 py-1 text-white font-light tracking-wider bg-red-600 rounded" type="submit">Clear</button>
+      <button onClick={handleClear} className="px-4 py-1 text-white font-light tracking-wider bg-red-600 rounded" type="button">Clear</button>
     </div>
   </form>
     </div>
